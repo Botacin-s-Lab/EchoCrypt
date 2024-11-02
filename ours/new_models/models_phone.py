@@ -21,9 +21,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model",
     type=str,
-    choices=['vit', 'swin', 'swin2', 'deit', 'beit', 'clip'],
+    choices=['vit', 'swin', 'swinv2', 'deit', 'beit', 'clip'],
     required=True,
-    help="Choose the model: 'vit', 'swin', 'swin2', 'deit', 'beit', or 'clip'"
+    help="Choose the model: 'vit', 'swin', 'swinv2', 'deit', 'beit', or 'clip'"
 )
 args = parser.parse_args()
 selected_model = args.model
@@ -37,7 +37,7 @@ if selected_model == 'swin':
         num_labels=36,
         ignore_mismatched_sizes=True  
     )
-elif selected_model == 'swin2':
+elif selected_model == 'swinv2':
     model_name = 'microsoft/swinv2-tiny-patch4-window16-256'
     processor = AutoImageProcessor.from_pretrained(model_name)
     model = Swinv2ForImageClassification.from_pretrained(
@@ -96,7 +96,7 @@ else:
     raise ValueError('[ERROR] Select Your Model')
 
 # Define transformations
-if selected_model == ('vit' or 'swin' or 'deit' or 'beit' or 'clip'):
+if selected_model in ('vit', 'swin', 'deit', 'beit', 'clip'):
     print("vit/swin/deit/beit/clip activated")
     train_transforms = transforms.Compose([
         transforms.Resize((224, 224)),
@@ -121,8 +121,8 @@ if selected_model == ('vit' or 'swin' or 'deit' or 'beit' or 'clip'):
         transforms.ToTensor(),
         transforms.Normalize(mean=processor.image_mean, std=processor.image_std),
     ])
-elif selected_model == 'swin2':
-    print("swin2 activated")
+elif selected_model == 'swinv2':
+    print("swinv2 activated")
     train_transforms = transforms.Compose([
         transforms.Resize((256, 256)),
         transforms.ToTensor(),
@@ -343,14 +343,6 @@ with torch.no_grad():
 
         all_preds.extend(predicted.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
-
-# Confusion Matrix
-conf_matrix = confusion_matrix(all_labels, all_preds, labels=class_labels)
-plt.figure(figsize=(12, 10))
-sns.heatmap(conf_matrix, annot=True, xticklabels=class_labels, yticklabels=class_labels)
-plt.xlabel('Predicted Labels')
-plt.ylabel('True Labels')
-plt.savefig(f"confusion_matrix_phone_{selected_model}.png")
 
 # Classification Report
 with open(f"classification_report_phone_{selected_model}.txt", "w") as file:

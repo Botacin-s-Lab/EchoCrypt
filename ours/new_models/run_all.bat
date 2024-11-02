@@ -1,5 +1,5 @@
-python models_zoom.py --model=vit
 python models_zoom.py --model=swin
+python models_zoom.py --model=vit
 python models_zoom.py --model=swinv2
 python models_zoom.py --model=deit
 python models_zoom.py --model=beit
