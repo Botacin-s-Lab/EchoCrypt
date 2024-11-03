@@ -95,3 +95,12 @@ for item in combined_dataset:
     # Save the image as a JPG file
     image.save(file_path)
 ```
+
+### Number of Parameters 
+- ViT (huggingface google/vit-base-patch16-224-in21k): 85,826,340 (86M)
+- BeiT (huggingface microsoft/beit-base-patch16-224-pt22k-ft22k): 85,789,668 (86M)
+- DeiT (huggingface facebook/deit-base-distilled-patch16-224): 85,827,876 (86M)
+- Swin (huggingface microsoft/swin-tiny-patch4-window7-224): 27,547,038 (28M)
+- SwinV2 (huggingface microsoft/swinv2-tiny-patch4-window16-256): 27,605,838 (28M)
+- CLIP (huggingface openai/clip-vit-base-patch32): 87,483,684 (87M)
+- CoAtNet: 24,033,296 (24M)

@@ -15,6 +15,7 @@ from transformers import AutoImageProcessor
 from collections import defaultdict
 from PIL import Image
 
+
 # Define the dataset path
 dataset_dir = '../../img_dataset_zoom'
 parser = argparse.ArgumentParser()
@@ -27,6 +28,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 selected_model = args.model
+
 
 # define models
 if selected_model == 'swin':
@@ -95,6 +97,16 @@ elif selected_model == 'clip':
 else:
     raise ValueError('[ERROR] Select Your Model')
 
+
+# model parameter count
+if selected_model in ('vit', 'swin', 'deit', 'beit', 'swinv2'):
+    param_count = model.num_parameters()
+    print(f"Total number of parameters for {selected_model} is {param_count}")
+elif selected_model == 'clip':
+    total_params = sum(p.numel() for p in model.parameters())
+    print(f"Total number of parameters: {total_params}")
+
+
 # Define transformations
 if selected_model in ('vit', 'swin', 'deit', 'beit', 'clip'):
     print("vit/swin/deit/beit/clip activated")
@@ -149,12 +161,14 @@ elif selected_model == 'swinv2':
 else:
     raise ValueError('[ERROR] Define any transformations')
 
+
 # Load the dataset
 full_dataset = ImageFolder(root=dataset_dir, transform=train_transforms)
 
 image_path, _ = full_dataset.samples[0] 
 sample_img = Image.open(image_path).convert('RGB')
 transformed_img = train_transforms(sample_img)
+
 
 # Denormalize the tensor for visualization
 inv_normalize = transforms.Normalize(
