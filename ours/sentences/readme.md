@@ -5,4 +5,3 @@
 - Overall 13316 sentences.
 - No punctuation. e.g. "end-to-end" is "endtoend".
 - Only the first 941 sentences has digits.
-- 
