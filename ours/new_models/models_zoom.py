@@ -195,8 +195,7 @@ train_indices, temp_indices, y_train, y_temp = train_test_split(
     range(len(targets)),
     targets,
     test_size=0.3,  # 30% of the data will go to val+test
-    stratify=targets,
-    random_state=42
+    stratify=targets
 )
 
 # Second split: Validation and Test
@@ -204,8 +203,7 @@ val_indices, test_indices, y_val, y_test = train_test_split(
     temp_indices,
     y_temp,
     test_size=0.33,  # 33% of the temp data goes to test, resulting in 20% test of the total data
-    stratify=y_temp,
-    random_state=42
+    stratify=y_temp
 )
 
 # Create Subset datasets
