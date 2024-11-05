@@ -1,4 +1,3 @@
-
 python models_phone.py --model=vit
 python models_phone.py --model=swin
 python models_phone.py --model=swinv2
