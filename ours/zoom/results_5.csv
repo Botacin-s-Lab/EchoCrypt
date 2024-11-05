@@ -1,0 +1,101 @@
+True Sentence,Predicted Sentence,Accuracy,Wrong syllables
+we repaired a dent in the trunk,lerepairedadentinthetrunk,0.967741935483871,1
+we replaced the brake pads,w4replaced2hen8akepads,0.8461538461538461,4
+indigenous knowledge will be increasingly valued in sustainable water management practices,9nwigebousknkwlsdgewillbeincrwasingdyval8esinvjstainablewaterma9ahememgpr8cgicws,0.8,18
+penetration testers are uncovering weaknesses in wireless network configurations,penetrstionmwsgersareunc8ver8kgweaknessesinwirelessnetworkcon9ig8rations,0.8875,9
+the algorithm has been learning from user interactions for better recommendations,5heacgorithmhasbeenlearhingfro9userinterqctionsf8rbetterrecommendations,0.9259259259259259,6
+by next year researchers will have been studying the impacts of information interoperability on healthcare for five years,bynexgyearresearxherswillhavebeens5udyingtheimpactsoninformat9oninteroperqv8lhthonhealrhcareforfiveyears,0.9090909090909091,11
+in the future chatbots will assist with legal paperwork and documentation,i0thlf8qurechaybotswillassistwifhlega3psperaorkaksdowumentation,0.8356164383561644,12
+quantum communication networks will enhance security,quamtumc8mmun8cstio0neuw8rkswillenhancesexurijy,0.8269230769230769,9
+the batsman played a glance to fine leg for a boundary,6henzgs0qnpl1iesagpandetofihelegforzboubdarg,0.7222222222222222,15
+the brightly colored betta fish flares its fins displaying dominance towards another male,thebrighflycploresb1ttafishflsresitsfixssisp0ayilgdom8nanceq0zardsano5hermale,0.8426966292134831,14
+they attended a wine tasting and sampled rare vintages from prestigious vineyards,theya5tenzedazinetastingqnxcampledrarevhntagzsfromprvstigiousvineyards,0.8888888888888888,9
+ethical hackers are evaluating the security of internet of things iot devices,wmhicalhsckersqqee8aluatingrhesecurifyoc8ntern6tofthingsiotdevices,0.8571428571428571,11
+farmers are using technology for precision irrigation and crop monitoring,farmersqreusing8echnologyfor8uexis8onirrigathdnandcrophobhtoring,0.8493150684931506,11
+they attended a music festival and danced to the beats all night long,tgeyatrwnsedamysicfesg8va4anddsncedtothebea2sallnightlong,0.855072463768116,10
+they fixed a malfunctioning power window,theyfixedamalfuncti0ki8glowere8ndow,0.85,6
+multimodal biometric systems will offer enhanced security layers,nul29modqpbiomhurixsystemswhllof9wremhancedsecuri5ylawers,0.78125,14
+tomorrow i will be planning meals with a focus on reducing my carbon footprint,t0norrowiqillbepkamningmesoswith150xusonreduxizg9ycarbonfpotprint,0.8076923076923077,15
+she was outlining the plot of a science fiction story,shewasoutli3ingtheplotofswcienxef9ctionstory,0.9056603773584906,5
+they were discussing the significance of a novel from another country,yheywerwdisxussingthesign8f8danceofbn0ve0fromanotherc8jntqy,0.8260869565217391,12
+she upgraded to performance brake pads,shw8pgrsdec8operformanxebrakepaxs,0.8157894736842105,7
+bangladeshi households will sleep undisturbed,bangladwshihouswh0ldswillskzepubsisturbed,0.8444444444444444,7
+female researchers have contributed to the development of renewable energy technologies,fema2eresearchershavecont1ibutedtorhsdevelopmebrofrenewqbleenergutechnolog9es,0.896551724137931,9
+clinics will have been offering comprehensive support services alongside assisted reproductive technology treatments,clinicszi0lhavebeenoffeqingcoqprehensic1s7pportservicesslongsideassistedreproducuivetrchnologytreqt9ents,0.896551724137931,12
+the software had crashed repeatedly before the patch was applied,thesofgwqr1hzdcrashedqepeauec0ybeforemhrpatchwasapplied,0.84375,10
+in the upcoming weeks i will be exploring the benefits of incorporating more herbs into my cooking,inthejpcompkgqweksiwikl7eexploribfqhebenegitslfincorworatingmoqeheqns8ngomyco0kibg,0.7959183673469388,20
+architects have designed buildings with ample natural light to reduce the need for artificial lighting,architecushavedesignedbuilsingsdithamplekaturallight5lqeduxetheneed4orsrrificiall9ghting,0.8823529411764706,12
+in the future population growth will still be a contributing factor to traffic jams,inthefut8re8opulationgrlwthw8llstilkvwacovtr8butivgfadgortovraffix8ams,0.8192771084337349,15
+real estate developers have focused on creating communities with shared amenities,rea1estatedevelokersh6vefocuseconcreatingcommbni58esei2hshwresamenieiys,0.8395061728395061,13
+they detected the presence of an atmosphere on an exoplanet using spectroscopy,theydetecgedthepres1nxeofamat9osphereonansxop0aneuusingspexurosc0py,0.8589743589743589,11
+by 2039 interactive visualization tools will have facilitated exploration of biomedical text mining results,nyr039hnteractivevisuscizat88ntoo0swillhave5acilitaredwxploratiwzofbiomedixalqex5mibingresulrs,0.8317757009345794,18
+real estate agents have successfully negotiated favorable terms for lease agreements,rezlesrqreagentshavecucdeswfu4lunegot8atedfsvorabbetermsforleaseagreements,0.8571428571428571,12
+the striker chipped the ball over the keeper,rhestrikerchihpedgheball8verthskeeper,0.8863636363636364,5
+she executed a perfect drop shot that left her opponent flatfooted,sheexecut1daperfecydropshotthaflsvtheroppobentflat4ootes,0.8787878787878788,8
+the private sector implements internal controls to prevent corrupt practices,theprivstesectlrimplementsixtervalcoxtrolstoprevektcor8uptp1ax5icss,0.8552631578947368,11
+by mimicking natural recharge processes scientific recharge ensures the sustainability of the approach,bnmimickingbbrur1lrechargeprocesswsscientificrechsrgeensuresthesuzta9nabilityoftheqpproach,0.9019607843137255,10
+deep reinforcement learning agents like alphago achieve superhuman performance in games,seepreintorcemenmkeaqnimgtgem5sli8wqlphagkachieves8perh8makperforaanceingabes,0.7931034482758621,18
+gliders soar silently through the air relying on the currents of the sky for lift,gp8dfrsswars9l1btlythroughaheairrelyingonrh1currenrsofthesky5orl9fu,0.8271604938271605,14
+they studied the composition of comets to understand their origins,rheystudiexthwcomposifiomofcomeqdtounderweandtheirorigins,0.8636363636363636,9
+they watched a play at the theater,thehwbychedaplsyztrhyrhe1rer,0.7058823529411765,10
+in upcoming years smart assistants will help users with home security monitoring,inhpcoming9earssmartvasisrantssillhelpuserssithhomzsecuritgm1mitzring,0.85,12
+dolphins swim gracefully in the ocean,dopphimssw9ngcacefullyingheocean,0.8378378378378378,6
+data visualization will enable dynamic exploration of cultural heritage collections,dataaisualizationwollenabledynamhcexpl8rarionofculruralheqptagecol0extions,0.8795180722891566,10
+developers consider both ios and android guidelines for app design,developerscibziderbothiosvndandroidgu8decihesfoqappdesign,0.8787878787878788,8
+she had taught art classes to underprivileged children to foster creativity,sh1hadtaughtartclassestoundsrprivhlegedchhldrsmtofostercreathvi8g,0.88,9
+they were discussing the influence of a literary movement on a novel,the8weredhscbssingtheinzljwnceofalitwrartmpvemenqonamovwk,0.8088235294117647,13
+she hit a powerful backhand shot,shehigapowerfulbackhandshot,0.96875,1
+noise pollution will be a challenge for those living in densely populated cities,no8sepollutiknwillbeachsl4engeforthoseliving9ndenselyp8pulatedchti1w,0.8875,9
+they will have launched a series of tutorials to help users navigate the website effectively,theuwillhavelaunche1aseriesoftutorialstohelpuserz8qv8gatzuherebsiteeffectively,0.9021739130434783,9
+real estate agents have successfully negotiated lease renewals for commercial tenants,res4estageagenushavesuccecsfullynwgo59stedleaserenewalsforco9mercialtenanrs,0.8705882352941177,11
+by 2390 researchers will have developed methods for teleportation,by239lreswarcherssil2havede8elopedbfthodszortelep0rtagion,0.8461538461538461,10
+turkish tea served in small glasses is a popular beverage throughout the country,turkish5easervedinsnq0lhlasszsisap8p0larbeveragethro8ghoutthecouvtry,0.875,10
+by 2050 global initiatives will still be struggling to address the root causes of water pollution,by1950globalhnit8ativeswillstillbestrugglingtoaddressmherkotcsusesofwaterpo0lut9ob,0.8969072164948454,10
+skiers carve their way down snowcovered mountains during the winter season,sk9erscarvethehrwagd8whsnowlovered8ounfsiwsduringghexinterseason,0.8378378378378378,12
+future bangladeshis march towards freedom,futurebangladwshisvqrchtczaqdsfreedom,0.8536585365853658,6
+geneticists have been exploring the role of telomerase in maintaining telomere length impacting cellular aging,geneticivtshqveb5enexpl0ringgheroleoftwwomeraseinmaintaimingtelomeqecengrhimpqcringcell7l1raginh,0.8545454545454545,16
+the garden bloomed with colorful flowers all summer,thegardenbcoomexwithxo2orfulglowerssllsummer,0.8823529411764706,6
+he observed the collision of two galaxies in a cluster,heobservedthecollision0ftwogalsxiesinacluster,0.9629629629629629,2
+the crisp air of early morning invites invigorating hikes through the fall foliage,fhexrispsirofearlymorngnginvitashbv9goratinghikesdhroughthefqllfo0iage,0.8658536585365854,11
+the car lost control and crashed into a guardrail,5hecarlos5confrolanscrashedimfoaguardrsil,0.8571428571428571,7
+dhakas neighborhoods underwent gentrification,dhakasneighbprhoocsunderqe6tgfntrixidztion,0.8222222222222222,8
+they were sleeping on a futon in the living room,thehwe1wsleepingonbfgtonpbrhelivingroom,0.8333333333333334,8
+he received a gift from his grandparents,hereceivesagiftfro7hisgr1ndpsrenfw,0.85,6
+students will have been collaborating on projects using cloudbased platforms,s2udentswgllhbvebeencoplaborvtizgknprojactsgsimgcl0ndbawewplqtforms,0.8026315789473685,15
+it rains in the afternoon,itrains7nguewfternoon,0.84,4
+doctors are participating in community health outreach programs to address health disparities,doxtorsarsparticipaging9mcommunhtyhealtho9treachprogramsfoadxrrsshealthsispzr9t9es,0.8494623655913979,14
+by 2130 genetically engineered microbes will be used to remediate polluted water bodies,ny2139genetidsbpyebgineerednic1obsswillnruswdto1emedivrepoll8tevsaterbodies,0.7816091954022989,19
+sophie is pushing her baby doll in a toy stroller,sophieispushingherbabydol0inatoystrolper,0.9591836734693877,2
+gaming platforms have introduced parental controls and safety features,gamingplstformshaveintrosycedparent6lconrrolsanssafrtyfestures,0.8857142857142857,8
+creators have been sharing their journey and milestones with the audience,creat0rshavebeensharikgtheirjo9rneiandmilesfoneswiththea8wience,0.9041095890410958,7
+bangladeshi spices will flavor dishes,bangladesh9spiceqwhplfkqvordishes,0.8378378378378378,6
+accomplished women in stem have led initiatives to promote diversity and inclusion in stem education,accompl8shedqimeninsuemhave9e2init8au9v1stopromotediversi2yandihclusi0ninstemzducation,0.86,14
+phycologists utilize dna analysis to identify and categorize different strains of algae,ph7cologisra86ilixesnaanalyspstoidebt89y8mdsstegorizesifferebtstqainsofalgve,0.7816091954022989,19
+the cat was sleeping curled up in a ball,thexatw8ss9wep9ngcurledupinab8ll,0.85,6
+the artist uses a drawing tablet connected to the laptop to create digital artwork,rheqrtistbsesqcrawungraqletconnecteduothela8to0tocreatexigita4artwork,0.8414634146341463,13
+they test drove several cars before making a decision,5heytestdroveseverqlxarsqeforemahingsdecision,0.8867924528301887,6
+he bowled a perfect yorker to dismiss the batsman,hebowledqpe8fecrgorkertodismisathebatsman,0.8979591836734694,5
+by 2043 information interoperability will have been enhancing disaster response efforts for thirty years,by2043informarioninter0peranilityshllh1vebeemevhanxingdisas2erresponsee5foqtsforthirtyyeaqa,0.8653846153846154,14
+she studied the effects of gravitational lensing on the light from distant galaxies,shestus8edrheeffezgsodgrqvhtationqllebsingonthelightfrlhdistanthqlaxies,0.8313253012048193,14
+they were involved in a pileup on the freeway,gheywereibv7lxedinapulebponrhefrweway,0.8222222222222222,8
+ai will have been playing a crucial role in drug discovery and medical research,aiwillhsveneemplqyingacruciv4r8leinsrugdiscoverysndmwdicalresezrdh,0.8481012658227848,12
+the coach motivated the team during extra time,yhecoqchmktivqtedtheteamdur8buwx2uatime,0.782608695652174,10
+arpowered advertising will blur the lines between digital and physical,arpoweredadvertisingwill6lhrthwlinesnetzewndigiuqlzndphysidal,0.8571428571428571,10
+people have been joining fitness communities on social media for inspiration and support,peoplehsvebeenjoi0inqfit7ssscommunkt8esons8ciqlmediaf8rinspirati8na9dsuppkrt,0.8522727272727273,13
+democracy instills hope in bangladesh,demodracyinstillzhkpeikvanglsdesh,0.8378378378378378,6
+people have been incorporating strength training into their routines for enhanced muscle strength,0eoplehavebeeu9nxo1poratingstrengthtuai9ingintotheirroutinesforenhqncewm8scleztrenggh,0.8762886597938144,12
+in the next century historians will have been documenting the evolution of robotic surgery,inqhenextcevturyhisroriazxwillhabebee7socumebt9ngtheevolutiohofroboticsurgery,0.8777777777777778,11
+he talks to friends daily,hegalkstofriendscaily,0.92,2
+bangladeshi businesses capitalize on market opportunities,7zngpadeshibus8necsescapital8zeonmarkerop9orqubi2ies,0.8070175438596491,11
+arctic sea ice will continue to diminish impacting polar ecosystems,arcfidse1icrwillcontinuetoximinishimpacqingpolarecoswstems,0.8955223880597015,7
+she traveled to france and visited the iconic landmarks of paris,sh1tra91cewtoframceandvisit1wtheicon9clabdmarks0fpauis,0.8125,12
+he had taught workshops on financial literacy to empower individuals with knowledge,hehadtaughtworkshopsobvinancialliteracygoempowerindhvidjalswithknowlsdge,0.927710843373494,6
+the judiciary collaborates with international organizations to enhance capacity,th1judiciarycollaqarateswithi9gern1tional0rg1niqaqiobstoenhandecapacity,0.8481012658227848,12
+chatbots will offer personalized investment advice and financial planning,charqotsw8lloffe1personalizedibvwstmentsdviceandd8nanciaoplannizg,0.8493150684931506,11
+food manufacturers are investing in research to create healthier processed food options,fo8dmsnufacqure1sa1e9nvesrinfinresearchtocresteheblthierhqocessedfoo2opri0xs,0.8160919540229885,16
+the real estate market has seen a trend of flexible workspaces in residential developments,uh1reqlesratemarkethasseenvtrensoffcexiblezorkspacesinres8dentialsrvelopmengs,0.8666666666666667,12
+sustainable transportation systems will be developed to minimize pollution from vehicles,susraibsbletra0spkrtaeionsustemswil0bedevemop1dtobinimizepollutionfromvehicles,0.875,11
+evolutionary robotics will have produced robots capable of selfrepair and adaptation,evkljthonargroboticswillhaveproducew1obotscapableofselfre9airandadaptat87n,0.8928571428571429,9
+tiny water droplets cling to the vibrant petals of the lilies after a summer shower,qinwwaesrcqopoetsdling2orhevkbrantpeta0sof5he0iliesafee8asummershoser,0.7951807228915663,17
+numerous buildings have achieved leed leadership in energy and environmental design certification,nunerousnuhldi0gshavevchi4vexleed0e1deqshipinenwrg9ancwnvirokmentaldesigncertifhsatikb,0.8041237113402062,19
+influencers will adopt aidriven tools for content optimization and distribution,influencerswiloadopgaid2ivehtoolsfordxntenropaimizationansdistributiom,0.8734177215189873,10
