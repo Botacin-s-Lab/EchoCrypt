@@ -54,7 +54,7 @@ def compute_accuracy_and_wrong_syllables(true_sentence, predicted_sentence):
     
     return accuracy, wrong_syllables
 
-NFs = [1, 5, 6]
+NFs = [1, 1.5, 2]
 model_id = "meta-llama/Llama-3.1-8B-Instruct"
 output_dir = "llama3_1_8b"
 pipe = pipeline(

@@ -1,0 +1,47 @@
+- 1B
+- NF 1
+- LLM Average Accuracy: 0.9564564414385444
+- LLM Sum of Wrong Syllables: 525
+---
+- 1B
+- NF 5
+- LLM Average Accuracy: 0.7679998762433198
+- LLM Sum of Wrong Syllables: 2239
+---
+- 1B
+- NF 6
+- LLM Average Accuracy: 0.6005106454866648
+- LLM Sum of Wrong Syllables: 2343
+
+---
+- 3B
+- NF 1
+- LLM Average Accuracy: 0.9935726024752972
+- LLM Sum of Wrong Syllables: 220
+---
+- 3B
+- NF 5
+- LLM Average Accuracy: 0.8926553222468829
+- LLM Sum of Wrong Syllables: 1701
+---
+- 3B
+- NF 6
+- LLM Average Accuracy: 0.6951608020737897
+- LLM Sum of Wrong Syllables: 2622
+
+---
+
+- 8B
+- NF 1
+- LLM Average Accuracy: 0.9964405469123979
+- LLM Sum of Wrong Syllables: 118
+---
+- 8B
+- NF 5
+- LLM Average Accuracy: 0.9221289253837536
+- LLM Sum of Wrong Syllables: 1248
+---
+- 8B
+- NF 6
+- LLM Average Accuracy: 0.7523719200663457
+- LLM Sum of Wrong Syllables: 2413
