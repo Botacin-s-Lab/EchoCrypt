@@ -44,3 +44,20 @@
 - NF  2
 - LLM Average Accuracy: 0.6685591140624906
 - LLM Sum of Wrong Syllables: 2643
+
+---
+
+- GPT-4o
+- NF 1
+- LLM Average Accuracy: 0.9988974046096585
+- LLM Sum of Wrong Syllables: 69
+---
+- GPT-4o
+- NF 1.5
+- LLM Average Accuracy: 0.9922325531290126
+- LLM Sum of Wrong Syllables: 255
+---
+- GPT-4o
+- NF  2
+- LLM Average Accuracy: 0.9013470603625245
+- LLM Sum of Wrong Syllables: 1402
