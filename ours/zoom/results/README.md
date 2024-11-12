@@ -45,3 +45,20 @@
 - NF 6
 - LLM Average Accuracy: 0.7523719200663457
 - LLM Sum of Wrong Syllables: 2413
+
+---
+
+- GPT-4o
+- NF 1
+- LLM Average Accuracy: 0.9992890388500122
+- LLM Sum of Wrong Syllables: 38
+---
+- GPT-4o
+- NF 5
+- LLM Average Accuracy: 0.9875754163352177
+- LLM Sum of Wrong Syllables: 376
+---
+- GPT-4o
+- NF 6
+- LLM Average Accuracy: 0.9460556904547917
+- LLM Sum of Wrong Syllables: 995
