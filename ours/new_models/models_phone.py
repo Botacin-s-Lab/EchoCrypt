@@ -26,8 +26,16 @@ parser.add_argument(
     required=True,
     help="Choose the model: 'vit', 'swin', 'swinv2', 'deit', 'beit', or 'clip'"
 )
+
+parser.add_argument(
+    "--seed",
+    type=str,
+    required=True,
+    help="e.g., --seed=st_seed0"
+)
 args = parser.parse_args()
 selected_model = args.model
+seed_num = args.seed
 
 
 # define models
@@ -319,7 +327,7 @@ for epoch in range(num_epochs):
         best_val_accuracy = val_accuracy
         epochs_no_improve = 0
         # Save the best model
-        torch.save(model.state_dict(), f'best_model_phone_{selected_model}.pth')
+        torch.save(model.state_dict(), f'{seed_num}/best_model_phone_{selected_model}.pth')
         print("Validation accuracy improved, model saved.")
     else:
         epochs_no_improve += 1
@@ -334,7 +342,7 @@ for epoch in range(num_epochs):
 from sklearn.metrics import classification_report, confusion_matrix
 
 # Load the best model 
-model.load_state_dict(torch.load(f'best_model_phone_{selected_model}.pth'))
+model.load_state_dict(torch.load(f'{seed_num}/best_model_phone_{selected_model}.pth'))
 class_labels = [str(i) for i in range(10)] + [chr(i) for i in range(ord('a'), ord('z') + 1)]
 
 # Collect all predictions and labels
@@ -355,7 +363,7 @@ with torch.no_grad():
         all_labels.extend(labels.cpu().numpy())
 
 # Classification Report
-with open(f"classification_report_phone_{selected_model}.txt", "w") as file:
+with open(f"{seed_num}/classification_report_phone_{selected_model}.txt", "w") as file:
     file.write(classification_report(all_labels, all_preds, digits=4))
 
 
