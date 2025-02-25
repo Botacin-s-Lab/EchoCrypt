@@ -28,5 +28,3 @@ loading a trained model and data prep. The script will create a csv file called 
 True Sentence, Predicted Sentence,LLM Sentence. The LLM Sentence is the corrected sentence by LLM.
 
 Lastly, you may save the model. The saved model is a folder so there is a script for zipping it.
-
-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
