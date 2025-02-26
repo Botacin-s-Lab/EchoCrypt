@@ -54,9 +54,13 @@ def compute_accuracy_and_wrong_syllables(true_sentence, predicted_sentence):
     
     return accuracy, wrong_syllables
 
-NFs = [1, 5, 6]
-model_id = "meta-llama/Llama-3.1-8B-Instruct"
-output_dir = "llama3_1_8b"
+NFs = [
+    "0001_noise",
+    "001_noise",
+    "002_noise",
+]
+model_id = "meta-llama/Llama-3.2-3B-Instruct"
+output_dir = "llama3_2_3b"
 pipe = pipeline(
     "text-generation",
     model=model_id,
