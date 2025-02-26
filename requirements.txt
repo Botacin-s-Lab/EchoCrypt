@@ -89,3 +89,6 @@ typing_extensions==4.12.2
 tzdata==2025.1
 urllib3==2.3.0
 wcwidth==0.2.13
+huggingface_hub==0.29.1
+transformers==4.49.0
+accelerate==1.4.0
