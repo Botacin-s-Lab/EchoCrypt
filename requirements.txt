@@ -92,3 +92,7 @@ wcwidth==0.2.13
 huggingface_hub==0.29.1
 transformers==4.49.0
 accelerate==1.4.0
+nltk==3.9.1
+rouge-score==0.1.2
+levenshtein==0.26.1
+openpyxl==3.1.5
