@@ -1,3 +1,10 @@
 venv/
 __pycache__/
 .ipynb_checkpoints/
+
+ours/finetune/outputs/
+ours/finetune/phone_ds/
+ours/finetune/phone_model/
+ours/finetune/unsloth_compiled_cache/
+ours/finetune/zoom_ds/
+ours/finetune/zoom_model/

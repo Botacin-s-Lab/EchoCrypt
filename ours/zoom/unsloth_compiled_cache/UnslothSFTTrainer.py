@@ -2,7 +2,7 @@ from torch import Tensor
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from trl.trainer.sft_trainer import (Any, AutoModelForCausalLM, AutoTokenizer, BaseImageProcessor, Callable, ConstantLengthDataset, DataCollator, DataCollatorForLanguageModeling, Dataset, EvalPrediction, FeatureExtractionMixin, IterableDataset, Optional, PartialState, PeftConfig, PeftModel, PreTrainedModel, PreTrainedTokenizerBase, ProcessorMixin, SFTConfig, SFTTrainer, Trainer, TrainerCallback, TrainingArguments, Type, Union, dataclasses, defaultdict, deprecate_kwarg, generate_model_card, get_comet_experiment_url, get_peft_model, is_conversational, is_liger_kernel_available, is_peft_available, is_wandb_available, maybe_apply_chat_template, maybe_convert_to_chatml, nn, os, pack_examples, peft, peft_module_casting_to_bf16, prepare_model_for_kbit_training, torch, transformers, version, warnings, os)
+from trl.trainer.sft_trainer import (Any, AutoModelForCausalLM, AutoTokenizer, BaseImageProcessor, Callable, ConstantLengthDataset, DataCollator, DataCollatorForLanguageModeling, Dataset, EvalPrediction, FeatureExtractionMixin, IterableDataset, Optional, PartialState, PeftConfig, PeftModel, PreTrainedModel, PreTrainedTokenizerBase, ProcessorMixin, SFTConfig, SFTTrainer, Trainer, TrainerCallback, TrainingArguments, Type, Union, dataclasses, defaultdict, deprecate_kwarg, generate_model_card, get_comet_experiment_url, get_peft_model, is_conversational, is_liger_kernel_available, is_peft_available, is_wandb_available, maybe_apply_chat_template, maybe_convert_to_chatml, nn, os, pack_examples, peft, peft_module_casting_to_bf16, prepare_model_for_kbit_training, torch, transformers, version, warnings, BaseImageProcessor, Callable, ConstantLengthDataset, Dataset, FeatureExtractionMixin, IterableDataset, Optional, PartialState, PreTrainedTokenizerBase, ProcessorMixin, SFTConfig, Union, is_conversational, maybe_apply_chat_template, maybe_convert_to_chatml, os, pack_examples, warnings, os)
 
 
 import os
@@ -617,6 +617,20 @@ class _UnslothSFTTrainer(Trainer):
         formatting_func: Optional[Callable[[dict], str]],
         dataset_name: str,
     ) -> Union[Dataset, IterableDataset]:
+        if 'tokenizer'          not in locals(): tokenizer = processing_class
+        if 'formatting_func'    not in locals(): raise RuntimeError('Unsloth: Please file a bug report - `formatting_func` does not exist!')
+        if 'dataset_text_field' not in locals() and 'args' in locals(): dataset_text_field = args.dataset_text_field
+        if 'dataset_text_field' not in locals(): raise RuntimeError('Unsloth: Please file a bug report - `dataset_text_field` does not exist!')
+        test_text = dataset[0][dataset_text_field] if (formatting_func is None and dataset_text_field is not None) else formatting_func(dataset[0])[0]
+        chat_template = getattr(tokenizer, 'chat_template', None)
+        chat_template = '' if chat_template is None else chat_template
+        has_bos_token_already = (test_text.startswith(tokenizer.bos_token) or tokenizer.bos_token in chat_template) if getattr(tokenizer, 'bos_token', None) is not None else False
+        if 'add_special_tokens' not in locals() and has_bos_token_already:
+            from functools import partial
+            tokenizer = partial(tokenizer, add_special_tokens = False)
+            processing_class = tokenizer
+        else:
+            add_special_tokens = False if has_bos_token_already else locals().get('add_special_tokens', False)
         # Convert the dataset to an IterableDataset if it is a ConstantLengthDataset
         if isinstance(dataset, ConstantLengthDataset):
             return dataset
