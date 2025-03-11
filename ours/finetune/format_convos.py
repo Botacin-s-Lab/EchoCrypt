@@ -3,7 +3,7 @@ from datasets import Dataset, DatasetDict
 from tqdm import tqdm
 
 # Load the CSV file
-csv_file = "/home/ali/CSCE689_LLM/ours/zoom/results/ft_zoom_ds.csv"  # Replace with your CSV file path
+csv_file = "<repo_root_path>/ours/zoom/results/ft_zoom_ds.csv"  # Replace with your CSV file path
 data = pd.read_csv(csv_file)
 
 

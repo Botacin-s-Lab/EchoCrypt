@@ -1,5 +1,5 @@
 from huggingface_hub import login
-login(token='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')
+login(token='<hf_token>')
 
 import re
 import torch
