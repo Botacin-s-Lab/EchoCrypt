@@ -11,7 +11,7 @@ To load an LoRA model, you can load from scratch or the pretrained ones done by 
 to run in the notebook are named as the following respectively:
 Training from scratch (LoRA).
 and
-Training from pretrained LoRA, by Yichen
+Training from pretrained LoRA, by ?
 
 Within the pretrained LoRA by us, you probably need to load it from online by running:
 "Load pretrained from uploaded weights"
