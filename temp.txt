@@ -1,0 +1,110 @@
+.
+├── README.md
+├── ours
+│   ├── finetune
+│   │   ├── format_convos.py
+│   │   ├── ft.txt
+│   │   ├── phone.ipynb
+│   │   ├── readme.txt
+│   │   └── zoom.ipynb
+│   ├── phone
+│   │   ├── CoAtNet-1-Best-Phone.pkl
+│   │   ├── CoAtNet-1-Phone.pkl
+│   │   ├── confusion_matrix_CoAtNet-1-phone.png
+│   │   ├── input_batches
+│   │   │   ├── phone_gpt4o_nf_noise_0.012.jsonl
+│   │   │   ├── phone_gpt4o_nf_noise_0.024.jsonl
+│   │   │   └── phone_gpt4o_nf_noise_0.06.jsonl
+│   │   ├── llm_auto.py
+│   │   ├── llm_finetune.ipynb
+│   │   ├── llm_openai.ipynb
+│   │   ├── output_batches
+│   │   │   ├── phone_gpt4o_nf_noise_0.012.jsonl
+│   │   │   ├── phone_gpt4o_nf_noise_0.024.jsonl
+│   │   │   └── phone_gpt4o_nf_noise_0.06.jsonl
+│   │   ├── phone.ipynb
+│   │   ├── phone.py
+│   │   ├── phone_gen_data.py
+│   │   ├── phone_llm.ipynb
+│   │   ├── phone_llm_audio.ipynb
+│   │   ├── predictions-phone.csv
+│   │   └── results
+│   │       ├── BLEU_Accuracy_phone.pdf
+│   │       ├── Meteor_Score_phone.pdf
+│   │       ├── README.md
+│   │       ├── Rouge_1_phone.pdf
+│   │       ├── Rouge_2_phone.pdf
+│   │       ├── Rouge_L_phone.pdf
+│   │       ├── echocrypt
+│   │       ├── ft_noise_0.012.csv
+│   │       ├── ft_noise_0.024.csv
+│   │       ├── ft_noise_0.06.csv
+│   │       ├── ft_phone_ds.csv
+│   │       ├── gpt-4o
+│   │       ├── graphs.ipynb
+│   │       ├── graphs_phone.ipynb
+│   │       ├── llama3_1_8b
+│   │       ├── llama3_2_1b
+│   │       ├── llama3_2_3b
+│   │       ├── mean.xlsx
+│   │       └── std.xlsx
+│   ├── sentences
+│   │   ├── EnglishTenseUniqueDataset.xlsx
+│   │   ├── finetune_ds.csv
+│   │   ├── ft_sentences.txt
+│   │   ├── main.ipynb
+│   │   ├── readme.md
+│   │   └── sentences.txt
+│   └── zoom
+│       ├── CoAtNet-1-Best-Zoom.pkl
+│       ├── CoAtNet-1-Zoom.pkl
+│       ├── confusion_matrix_CoAtNet-1-zoom.png
+│       ├── input_batches
+│       │   ├── zoom_gpt4o_nf_noise_0.1.jsonl
+│       │   ├── zoom_gpt4o_nf_noise_0.5.jsonl
+│       │   └── zoom_gpt4o_nf_noise_1.0.jsonl
+│       ├── llm_auto.py
+│       ├── llm_finetune.ipynb
+│       ├── llm_openai.ipynb
+│       ├── output_batches
+│       │   ├── zoom_gpt4o_nf_noise_0.1.jsonl
+│       │   ├── zoom_gpt4o_nf_noise_0.5.jsonl
+│       │   └── zoom_gpt4o_nf_noise_1.0.jsonl
+│       ├── predictions-zoom.csv
+│       ├── results
+│       │   ├── README.md
+│       │   ├── bleu_zoom.pdf
+│       │   ├── echocrypt
+│       │   ├── ft_noise_0.1.csv
+│       │   ├── ft_noise_0.5.csv
+│       │   ├── ft_noise_1.0.csv
+│       │   ├── ft_zoom_ds.csv
+│       │   ├── gpt-4o
+│       │   ├── graphs.ipynb
+│       │   ├── graphs_zoom.ipynb
+│       │   ├── llama3_1_8b
+│       │   ├── llama3_2_1b
+│       │   ├── llama3_2_3b
+│       │   ├── mean.xlsx
+│       │   ├── meteor_zoom.pdf
+│       │   ├── rouge1_zoom.pdf
+│       │   ├── rouge2_zoom.pdf
+│       │   ├── rougeL_zoom.pdf
+│       │   └── std.xlsx
+│       ├── zoom.ipynb
+│       ├── zoom_llm.ipynb
+│       └── zoom_llm_audio.ipynb
+├── reference1
+│   ├── CoAtNet.py
+│   ├── README.md
+│   ├── infer.py
+│   └── train.py
+├── reference2
+│   ├── isolate_key_presses.py
+│   └── keyboard-side-channel.ipynb
+├── requirements.txt
+├── spectrogram_clean.pdf
+├── spectrogram_noisy.pdf
+└── temp.txt
+
+23 directories, 84 files
