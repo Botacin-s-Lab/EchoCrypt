@@ -135,6 +135,9 @@ for item in combined_dataset:
     image.save(file_path)
 ```
 
+## Contact and Support
+For any questions or support regarding this project, please feel free to open an issue on the GitHub repository or contact the authors directly.
+
 ## Future Work
 The future directions for this research include:
 - Expanding the dataset to include more diverse keyboard types, typing behaviors, and environmental noises.
