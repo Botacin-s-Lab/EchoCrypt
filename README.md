@@ -49,7 +49,13 @@ To set up this project, you need Python and several dependencies. Please follow 
 
 If you use this project and find it helpful in your research, please cite the following paper:
 ```bibtex
-TODO
+@article{ayati2025making,
+  title={Making Acoustic Side-Channel Attacks on Noisy Keyboards Viable with LLM-Assisted Spectrograms' "Typo" Correction},
+  author={Ayati, Seyyed Ali and Park, Jin Hyun and Cai, Yichen and Botacin, Marcus},
+  journal={arXiv preprint arXiv:2504.11622},
+  year={2025},
+  url={https://arxiv.org/abs/2504.11622}
+}
 ```
 
 ## Dataset
