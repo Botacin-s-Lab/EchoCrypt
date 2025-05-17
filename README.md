@@ -26,7 +26,7 @@ The project leverages the latest advancements in transformer architectures (such
 ```
 
 ## Installation and Setup
-To set up this project, you need Python 3.10.*, a CUDA-enabled GPU with at least 16GB of VRAM for fine-tuning and training (8GB VRAM minimum for inference), and an OpenAI API key. Once you have these, follow the steps below:
+To set up this project, you need Python 3.10.*, a CUDA-enabled GPU with at least 16GB of VRAM for fine-tuning and training (8GB VRAM minimum for inference), and an OpenAI API account. Once you have these, follow the steps below:
 
 1. Clone the repository. Be patient, as it is large:
    ```bash
