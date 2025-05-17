@@ -26,28 +26,43 @@ The project leverages the latest advancements in transformer architectures (such
 ```
 
 ## Installation and Setup
-To set up this project, you need Python and several dependencies. Please follow these steps:
+To set up this project, you need Python 3.10.*, a CUDA-enabled GPU with at least 16GB of VRAM for fine-tuning and training (8GB VRAM minimum for inference), and an OpenAI API key. Once you have these, follow the steps below:
 
-1. Clone the repository:
+1. Clone the repository. Be patient, as it is large:
    ```bash
    git clone https://github.com/seyyedaliayati/EchoCrypt.git
    ```
 
-2. Install the required Python packages:
+2. Change to the project directory:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   pip install --upgrade pip
-   pip install -r requirements.txt
+   cd EchoCrypt
    ```
 
-3. [Optional] Download the necessary pre-trained models for both the phone and zoom datasets from HuggingFace if you want to re-produce the results:
+3. Install the required Python packages:
+   ```bash
+   python -m venv venv       # On some systems, you may need to use `python3` instead of `python`
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   pip install --upgrade pip
+   pip install -r requirements.txt # Be patient, it might take a while to install all dependencies
+   ```
+
+## Re-Producing Results
+[Optional] Download the necessary pre-trained models for both the phone and zoom datasets from HuggingFace if you want to re-produce the results:
    - [Zoom Model](https://huggingface.co/seyyedaliayati/zoom_model)
    - [Phone Model](https://huggingface.co/seyyedaliayati/phone_model)
 
-## Citation
+- CoAtNet (Phone): `ours/phone/phone.ipynb`
+- CoAtNet (Zoom): `ours/zoom/zoom.ipynb`
+- Other VT Models (ViT, Swin, DeiT, BEiT, CLIP): Head over to `ours/new_models/` for the training scripts and results. You should find a `README.md` file there with detailed instructions on how to reproduce the results for each model.
+- Llama (Phone): `ours/phone/llm_auto.py`
+- Llama (Zoom): `ours/zoom/llm_auto.py`
+- GPT-4o (Phone): `ours/phone/llm_openai.ipynb`, first you need to generate the input batches, then you need to submit those to OpenAI batch API at [https://platform.openai.com/batches](https://platform.openai.com/batches), then download the results and continue with the notebook.
+- GPT-4o (Zoom): `ours/zoom/llm_openai.ipynb`, similar to the above.
+- Fine-Tuning: Head over to `ours/finetune/` for the training scripts and results. You should find a `README.md` file there with detailed instructions on how to finetune the Llama models.
 
+## Citation
 If you use this project and find it helpful in your research, please cite the following paper:
+
 ```bibtex
 @article{ayati2025making,
   title={Making Acoustic Side-Channel Attacks on Noisy Keyboards Viable with LLM-Assisted Spectrograms' "Typo" Correction},
