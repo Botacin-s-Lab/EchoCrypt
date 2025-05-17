@@ -47,18 +47,17 @@ To set up this project, you need Python 3.10.*, a CUDA-enabled GPU with at least
    ```
 
 ## Re-Producing Results
-[Optional] Download the necessary pre-trained models for both the phone and zoom datasets from HuggingFace if you want to re-produce the results:
+- Download the necessary pre-trained models for both the phone and zoom datasets from HuggingFace if you want to re-produce the results:
    - [Zoom Model](https://huggingface.co/seyyedaliayati/zoom_model)
    - [Phone Model](https://huggingface.co/seyyedaliayati/phone_model)
-
-- CoAtNet (Phone): `ours/phone/phone.ipynb`
-- CoAtNet (Zoom): `ours/zoom/zoom.ipynb`
-- Other VT Models (ViT, Swin, DeiT, BEiT, CLIP): Head over to `ours/new_models/` for the training scripts and results. You should find a `README.md` file there with detailed instructions on how to reproduce the results for each model.
-- Llama (Phone): `ours/phone/llm_auto.py`
-- Llama (Zoom): `ours/zoom/llm_auto.py`
-- GPT-4o (Phone): `ours/phone/llm_openai.ipynb`, first you need to generate the input batches, then you need to submit those to OpenAI batch API at [https://platform.openai.com/batches](https://platform.openai.com/batches), then download the results and continue with the notebook.
-- GPT-4o (Zoom): `ours/zoom/llm_openai.ipynb`, similar to the above.
-- Fine-Tuning: Head over to `ours/finetune/` for the training scripts and results. You should find a `README.md` file there with detailed instructions on how to finetune the Llama models.
+- **CoAtNet (Phone):** Follow `ours/phone/phone.ipynb`
+- **CoAtNet (Zoom):** Follow `ours/zoom/zoom.ipynb`
+- **Other VT Models (ViT, Swin, DeiT, BEiT, CLIP):** Head over to `ours/new_models/` for the training scripts and results. You should find a `README.md` file there with detailed instructions on how to reproduce the results for each model.
+- **Llama (Phone):** Follow `ours/phone/llm_auto.py`
+- **Llama (Zoom):** Follow `ours/zoom/llm_auto.py`
+- **GPT-4o (Phone):** Follow `ours/phone/llm_openai.ipynb`, first you need to generate the input batches, then you need to submit those to OpenAI batch API at [https://platform.openai.com/batches](https://platform.openai.com/batches), then download the results and continue with the notebook.
+- **GPT-4o (Zoom):** `ours/zoom/llm_openai.ipynb`, similar to the above.
+- **Fine-Tuning:** Head over to `ours/finetune/` for the training scripts and results. You should find a `README.md` file there with detailed instructions on how to finetune the Llama models.
 
 ## Citation
 If you use this project and find it helpful in your research, please cite the following paper:
