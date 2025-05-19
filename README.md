@@ -72,7 +72,7 @@ If you use this project and find it helpful in your research, please cite the fo
 }
 ```
 
-## Dataset
+## Datasets
 The project evaluates models on two main datasets from Harrison et al. (2023) (https://ieeexplore.ieee.org/abstract/document/10190721):
 - **Phone Dataset**: Audio data recorded from phone microphones, representing typical keystroke sounds.
 - **Zoom Dataset**: Keystroke sounds captured via Zoom audio calls, simulating remote typing scenarios.
