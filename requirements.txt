@@ -97,3 +97,4 @@ rouge-score==0.1.2
 levenshtein==0.26.1
 openpyxl==3.1.5
 unsloth
+ipywidgets
