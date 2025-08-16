@@ -1,0 +1,90 @@
+% TEMPLATE for Usenix papers, specifically to meet requirements of
+%  USENIX '05
+% originally a template for producing IEEE-format articles using LaTeX.
+%   written by Matthew Ward, CS Department, Worcester Polytechnic Institute.
+% adapted by David Beazley for his excellent SWIG paper in Proceedings,
+%   Tcl 96
+% turned into a smartass generic template by De Clarke, with thanks to
+%   both the above pioneers
+% use at your own risk.  Complaints to /dev/null.
+% make it two column with no page numbering, default is 10 point
+
+% Munged by Fred Douglis <douglis@research.att.com> 10/97 to separate
+% the .sty file from the LaTeX source template, so that people can
+% more easily include the .sty file into an existing document.  Also
+% changed to more closely follow the style guidelines as represented
+% by the Word sample file. 
+
+% Note that since 2010, USENIX does not require endnotes. If you want
+% foot of page notes, don't include the endnotes package in the 
+% usepackage command, below.
+
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage{usenix,epsfig,endnotes}
+
+% other packages
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{amsmath, amssymb}
+\usepackage{rotating}
+\usepackage{todonotes}
+\microtypecontext{spacing=nonfrench}
+\usepackage[available,functional,reproduced]{usenixbadges}
+
+\begin{document}
+\pagestyle{empty}
+
+% don't want date printed
+\date{}
+
+% make title bold and 14 pt font (Latex default is non-bold, 16 pt)
+%\title{\Large \bf Improving Acoustic Side-Channel Attacks on Keyboards  for Noisy Environments Using Visual Transformers and Large Language Models}
+\title{\Large \bf Making Acoustic Side-Channel Attacks on Noisy Keyboards Viable with LLM-Assisted Spectrograms' ``Typo'' Correction
+}
+
+\author{
+  Seyyed Ali Ayati\thanks{These authors contributed equally.} \\ 
+  \textit{ali.a@tamu.edu} \\
+  Texas A\&M University
+  \and
+  Jin Hyun Park\footnotemark[1] \\
+  \textit{jinhyun.park@tamu.edu} \\
+  Texas A\&M University
+  \and
+  Yichen Cai \\
+  \textit{yichen@cs.toronto.edu} \\
+  University of Toronto
+  \and
+  Marcus Botacin \\
+  \textit{botacin@tamu.edu} \\
+  Texas A\&M University
+}
+
+\maketitle
+
+% Use the following at camera-ready time to suppress page numbers.
+% Comment it out when you first submit the paper for review.
+% \thispagestyle{empty}
+
+\subsection*{Abstract}
+\input{Sections/abs}
+\input{Sections/intro}
+\input{Sections/motiv}
+\input{Sections/back}
+\input{Sections/meth}
+\input{Sections/eval}
+\input{Sections/disc}
+\input{Sections/rel}
+\input{Sections/conc}
+
+\footnotesize \bibliographystyle{acm}
+\bibliography{main}
+
+\end{document}
+
+
+
+
+
+
+
