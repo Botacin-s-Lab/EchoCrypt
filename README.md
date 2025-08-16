@@ -18,8 +18,10 @@ The project leverages the latest advancements in transformer architectures (such
 │   ├── phone                   # Files for the phone dataset and it's results
 │   ├── zoom                    # Files for the zoom dataset and it's results
 │   └── sentences               # Datasets used for finetuning and testing
+├── paper                       # PDF and LaTeX source code of the accepted paper
 ├── reference1                  # Reference implementation of CoAtNet and other models
 ├── reference2                  # Auxiliary scripts for isolating keypresses and additional research
+├── slides                      # PDF and LaTeX source code of the presented slides
 ├── requirements.txt            # Required Python dependencies
 ├── spectrogram_clean.pdf       # Clean spectrogram examples
 ├── spectrogram_noisy.pdf       # Noisy spectrogram examples
