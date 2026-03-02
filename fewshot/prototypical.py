@@ -281,36 +281,66 @@ def run_finetune(args):
     all_support_labels = torch.cat(all_support_labels)
 
     total_epochs = args.finetune_episodes // args.episodes_per_epoch
+    n_way = min(args.n_way, num_classes)
+    k_support = max(1, args.k_shot // 2)
+    k_query = max(1, args.k_shot - args.k_shot // 2)
+
+    # Group indices by class for efficient episode sampling
+    class_indices = {}
+    for cls in range(num_classes):
+        class_indices[cls] = (all_support_labels == cls).nonzero(as_tuple=True)[0]
+
     for epoch in tqdm(range(total_epochs), desc="Finetune epochs"):
         model.train()
         epoch_loss, epoch_acc = 0.0, 0.0
 
-        # ONE forward pass per epoch, accumulate losses across episodes
-        optimizer.zero_grad()
-        support_features = model(all_support_inputs)
-
-        total_loss = 0
         for ep in range(args.episodes_per_epoch):
-            s_feat, s_lab, q_feat, q_lab = sample_episode(
-                support_features, all_support_labels, num_classes,
-                n_way=min(args.n_way, num_classes),
-                k_support=max(1, args.k_shot // 2),
-                k_query=max(1, args.k_shot - args.k_shot // 2),
-            )
-            s_lab, q_lab = s_lab.to(device), q_lab.to(device)
+            # Select episode classes and gather only needed samples
+            classes = random.sample(range(num_classes), n_way)
+            ep_inputs, ep_new_labels = [], []
+            samples_per_class = []
 
-            loss, acc = prototypical_loss(
-                s_feat, s_lab, q_feat, q_lab,
-                n_way=min(args.n_way, num_classes)
-            )
-            total_loss = total_loss + loss
+            for new_label, cls in enumerate(classes):
+                cls_idx = class_indices[cls]
+                perm = cls_idx[torch.randperm(len(cls_idx))]
+                n_take = min(k_support + k_query, len(cls_idx))
+                ep_inputs.append(all_support_inputs[perm[:n_take]])
+                ep_new_labels.extend([new_label] * n_take)
+                samples_per_class.append(n_take)
+
+            ep_inputs = torch.cat(ep_inputs)
+            ep_new_labels = torch.tensor(ep_new_labels, device=device)
+
+            # Forward ONLY episode samples (much smaller than full support)
+            ep_features = model(ep_inputs)
+
+            # Split into support/query
+            s_feat, s_lab, q_feat, q_lab = [], [], [], []
+            idx = 0
+            for new_label, n in enumerate(samples_per_class):
+                cls_feat = ep_features[idx:idx + n]
+                s_feat.append(cls_feat[:k_support])
+                s_lab.extend([new_label] * k_support)
+                q_n = min(k_query, n - k_support)
+                if q_n > 0:
+                    q_feat.append(cls_feat[k_support:k_support + q_n])
+                    q_lab.extend([new_label] * q_n)
+                idx += n
+
+            s_feat = torch.cat(s_feat)
+            s_lab = torch.tensor(s_lab, device=device)
+            q_feat = torch.cat(q_feat)
+            q_lab = torch.tensor(q_lab, device=device)
+
+            optimizer.zero_grad()
+            loss, acc = prototypical_loss(s_feat, s_lab, q_feat, q_lab, n_way)
+            loss.backward()
+            optimizer.step()
+
+            epoch_loss += loss.item()
             epoch_acc += acc.item()
 
-        # One backward + step per epoch
-        (total_loss / args.episodes_per_epoch).backward()
-        optimizer.step()
-
-        epoch_loss = total_loss.item() / args.episodes_per_epoch
+        epoch_loss /= args.episodes_per_epoch
         epoch_acc /= args.episodes_per_epoch
 
         # Validation (no grad)
