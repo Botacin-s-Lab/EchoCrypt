@@ -1,0 +1,8 @@
+{
+  "method": "protonet_frozen",
+  "model": "ast",
+  "dataset": "../new_dataset_phone",
+  "k_shot": 1,
+  "seed": 456,
+  "test_accuracy": 0.19444444444444445
+}

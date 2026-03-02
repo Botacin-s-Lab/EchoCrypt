@@ -1,0 +1,9 @@
+{
+  "method": "baseline",
+  "model": "swin",
+  "dataset": "../img_dataset_zoom",
+  "k_shot": 8,
+  "seed": 123,
+  "test_accuracy": 0.7111111111111111,
+  "best_val_accuracy": 0.6166666666666667
+}

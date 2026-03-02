@@ -1,0 +1,8 @@
+{
+  "method": "protonet_frozen",
+  "model": "swin",
+  "dataset": "../img_dataset_zoom",
+  "k_shot": 1,
+  "seed": 123,
+  "test_accuracy": 0.14444444444444443
+}
