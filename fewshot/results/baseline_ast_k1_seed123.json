@@ -1,9 +1,0 @@
-{
-  "method": "baseline",
-  "model": "ast",
-  "dataset": "../new_dataset_phone",
-  "k_shot": 1,
-  "seed": 123,
-  "test_accuracy": 0.02777777798473835,
-  "best_val_accuracy": 0.02777777798473835
-}

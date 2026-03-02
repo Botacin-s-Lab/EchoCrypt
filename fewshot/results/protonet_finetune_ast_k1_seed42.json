@@ -1,9 +1,0 @@
-{
-  "method": "protonet_finetune",
-  "model": "ast",
-  "dataset": "../new_dataset_phone",
-  "k_shot": 1,
-  "seed": 42,
-  "test_accuracy": 0.25555555555555554,
-  "best_val_accuracy": 0.31111112236976624
-}

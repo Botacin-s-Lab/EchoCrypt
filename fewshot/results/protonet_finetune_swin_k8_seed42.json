@@ -1,9 +1,0 @@
-{
-  "method": "protonet_finetune",
-  "model": "swin",
-  "dataset": "../img_dataset_zoom",
-  "k_shot": 8,
-  "seed": 42,
-  "test_accuracy": 0.20555555555555555,
-  "best_val_accuracy": 0.2944444417953491
-}
