@@ -46,6 +46,7 @@ from data_utils import (
 # Feature extractor (backbone without classification head)
 # ---------------------------------------------------------------------------
 
+
 class FeatureExtractor(nn.Module):
     """Wraps a pretrained model to output feature embeddings."""
 
@@ -93,6 +94,7 @@ class FeatureExtractor(nn.Module):
 # Prototypical Network logic
 # ---------------------------------------------------------------------------
 
+
 def compute_prototypes(embeddings, labels, num_classes):
     """Compute class prototypes as mean embeddings."""
     prototypes = torch.zeros(num_classes, embeddings.size(1), device=embeddings.device)
@@ -113,6 +115,7 @@ def classify_by_prototype(query_embeddings, prototypes):
 # ---------------------------------------------------------------------------
 # Frozen mode
 # ---------------------------------------------------------------------------
+
 
 @torch.no_grad()
 def extract_features(model, loader, device):
@@ -159,9 +162,11 @@ def run_frozen(args):
     target_names = [class_label_map[i] for i in range(num_classes)]
     report = classification_report(labels, preds, target_names=target_names, digits=4)
 
-    print(f"\n{'='*60}")
-    print(f"PROTONET (FROZEN) | model={args.model} k_shot={args.k_shot} seed={args.seed}")
-    print(f"{'='*60}")
+    print(f"\n{'=' * 60}")
+    print(
+        f"PROTONET (FROZEN) | model={args.model} k_shot={args.k_shot} seed={args.seed}"
+    )
+    print(f"{'=' * 60}")
     print(f"Test Accuracy: {test_acc:.4f}")
     print(report)
 
@@ -176,7 +181,7 @@ def run_frozen(args):
     }
     result_path = os.path.join(
         args.output_dir,
-        f"protonet_frozen_{args.model}_k{args.k_shot}_seed{args.seed}.json"
+        f"protonet_frozen_{args.model}_k{args.k_shot}_seed{args.seed}.json",
     )
     with open(result_path, "w") as f:
         json.dump(result, f, indent=2)
@@ -188,6 +193,7 @@ def run_frozen(args):
 # ---------------------------------------------------------------------------
 # Episodic fine-tuning mode
 # ---------------------------------------------------------------------------
+
 
 def sample_episode(features, labels, num_classes, n_way, k_support, k_query):
     """Sample a single episode for episodic training."""
@@ -204,7 +210,7 @@ def sample_episode(features, labels, num_classes, n_way, k_support, k_query):
 
         if n_available < n_needed:
             perm = torch.randperm(n_available)
-            support_f.append(cls_features[perm[:min(k_support, n_available)]])
+            support_f.append(cls_features[perm[: min(k_support, n_available)]])
             support_l.extend([new_label] * min(k_support, n_available))
             query_idx = torch.randint(0, n_available, (k_query,))
             query_f.append(cls_features[query_idx])
@@ -213,10 +219,15 @@ def sample_episode(features, labels, num_classes, n_way, k_support, k_query):
             perm = torch.randperm(n_available)
             support_f.append(cls_features[perm[:k_support]])
             support_l.extend([new_label] * k_support)
-            query_f.append(cls_features[perm[k_support:k_support + k_query]])
+            query_f.append(cls_features[perm[k_support : k_support + k_query]])
             query_l.extend([new_label] * k_query)
 
-    return torch.cat(support_f), torch.tensor(support_l), torch.cat(query_f), torch.tensor(query_l)
+    return (
+        torch.cat(support_f),
+        torch.tensor(support_l),
+        torch.cat(query_f),
+        torch.tensor(query_l),
+    )
 
 
 def prototypical_loss(support_feat, support_lab, query_feat, query_lab, n_way):
@@ -251,12 +262,12 @@ def run_finetune(args):
         param.requires_grad = False
 
     # Unfreeze last 2 encoder layers + layernorm
-    if hasattr(model.backbone, 'encoder'):
+    if hasattr(model.backbone, "encoder"):
         layers = model.backbone.encoder.layer
         for layer in layers[-2:]:
             for param in layer.parameters():
                 param.requires_grad = True
-    if hasattr(model.backbone, 'layernorm'):
+    if hasattr(model.backbone, "layernorm"):
         for param in model.backbone.layernorm.parameters():
             param.requires_grad = True
 
@@ -265,20 +276,29 @@ def run_finetune(args):
     trainable_n = sum(p.numel() for p in trainable)
     print(f"  Trainable params: {trainable_n:,} / {total:,}")
 
+    # Gradient checkpointing: recompute activations during backward instead of
+    # storing them all, trading a ~20% compute overhead for large memory savings.
+    if hasattr(model.backbone, "gradient_checkpointing_enable"):
+        model.backbone.gradient_checkpointing_enable()
+        print("  Gradient checkpointing enabled.")
+
     optimizer = torch.optim.Adam(trainable, lr=args.finetune_lr)
+    # Mixed-precision scaler: halves activation memory by using float16 in fwd pass
+    scaler = torch.cuda.amp.GradScaler()
 
     best_val_acc = 0.0
     best_model_state = None
     patience_counter = 0
 
-    # Pre-load all support data to GPU for episodic training
+    # Pre-load all support data into CPU RAM (not GPU) to avoid consuming
+    # precious VRAM. Each episode will move only the needed slice to device.
     all_support_inputs = []
     all_support_labels = []
-    for inputs, labels in tqdm(support_loader, desc="Loading support to GPU"):
-        all_support_inputs.append(inputs.to(device))
-        all_support_labels.append(labels.to(device))
-    all_support_inputs = torch.cat(all_support_inputs)
-    all_support_labels = torch.cat(all_support_labels)
+    for inputs, labels in tqdm(support_loader, desc="Caching support to CPU RAM"):
+        all_support_inputs.append(inputs)
+        all_support_labels.append(labels)
+    all_support_inputs = torch.cat(all_support_inputs)  # stays on CPU
+    all_support_labels = torch.cat(all_support_labels)  # stays on CPU
 
     total_epochs = args.finetune_episodes // args.episodes_per_epoch
     n_way = min(args.n_way, num_classes)
@@ -308,34 +328,43 @@ def run_finetune(args):
                 ep_new_labels.extend([new_label] * n_take)
                 samples_per_class.append(n_take)
 
-            ep_inputs = torch.cat(ep_inputs)
+            ep_inputs = torch.cat(ep_inputs).to(device)  # move episode slice to GPU
             ep_new_labels = torch.tensor(ep_new_labels, device=device)
 
             # Forward ONLY episode samples (much smaller than full support)
-            ep_features = model(ep_inputs)
+            # autocast: runs forward pass in float16 to halve activation memory
+            with torch.cuda.amp.autocast():
+                ep_features = model(ep_inputs)
 
-            # Split into support/query
-            s_feat, s_lab, q_feat, q_lab = [], [], [], []
-            idx = 0
-            for new_label, n in enumerate(samples_per_class):
-                cls_feat = ep_features[idx:idx + n]
-                s_feat.append(cls_feat[:k_support])
-                s_lab.extend([new_label] * k_support)
-                q_n = min(k_query, n - k_support)
-                if q_n > 0:
-                    q_feat.append(cls_feat[k_support:k_support + q_n])
-                    q_lab.extend([new_label] * q_n)
-                idx += n
+                # Split into support/query
+                s_feat, s_lab, q_feat, q_lab = [], [], [], []
+                idx = 0
+                for new_label, n in enumerate(samples_per_class):
+                    cls_feat = ep_features[idx : idx + n]
+                    s_feat.append(cls_feat[:k_support])
+                    s_lab.extend([new_label] * k_support)
+                    q_n = min(k_query, n - k_support)
+                    if q_n > 0:
+                        q_feat.append(cls_feat[k_support : k_support + q_n])
+                        q_lab.extend([new_label] * q_n)
+                    else:
+                        # k=1 case: not enough samples for a separate query set,
+                        # reuse support samples as query (overlap is acceptable here)
+                        q_feat.append(cls_feat[:k_support])
+                        q_lab.extend([new_label] * k_support)
+                    idx += n
 
-            s_feat = torch.cat(s_feat)
-            s_lab = torch.tensor(s_lab, device=device)
-            q_feat = torch.cat(q_feat)
-            q_lab = torch.tensor(q_lab, device=device)
+                s_feat = torch.cat(s_feat)
+                s_lab = torch.tensor(s_lab, device=device)
+                q_feat = torch.cat(q_feat)
+                q_lab = torch.tensor(q_lab, device=device)
+
+                loss, acc = prototypical_loss(s_feat, s_lab, q_feat, q_lab, n_way)
 
             optimizer.zero_grad()
-            loss, acc = prototypical_loss(s_feat, s_lab, q_feat, q_lab, n_way)
-            loss.backward()
-            optimizer.step()
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
 
             epoch_loss += loss.item()
             epoch_acc += acc.item()
@@ -361,7 +390,9 @@ def run_finetune(args):
         if val_acc > best_val_acc:
             best_val_acc = val_acc
             patience_counter = 0
-            best_model_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+            best_model_state = {
+                k: v.cpu().clone() for k, v in model.state_dict().items()
+            }
         else:
             patience_counter += 1
 
@@ -388,9 +419,11 @@ def run_finetune(args):
     target_names = [class_label_map[i] for i in range(num_classes)]
     report = classification_report(labels, preds, target_names=target_names, digits=4)
 
-    print(f"\n{'='*60}")
-    print(f"PROTONET (FINETUNED) | model={args.model} k_shot={args.k_shot} seed={args.seed}")
-    print(f"{'='*60}")
+    print(f"\n{'=' * 60}")
+    print(
+        f"PROTONET (FINETUNED) | model={args.model} k_shot={args.k_shot} seed={args.seed}"
+    )
+    print(f"{'=' * 60}")
     print(f"Test Accuracy: {test_acc:.4f}")
     print(f"Best Val Accuracy: {best_val_acc:.4f}")
     print(report)
@@ -407,7 +440,7 @@ def run_finetune(args):
     }
     result_path = os.path.join(
         args.output_dir,
-        f"protonet_finetune_{args.model}_k{args.k_shot}_seed{args.seed}.json"
+        f"protonet_finetune_{args.model}_k{args.k_shot}_seed{args.seed}.json",
     )
     with open(result_path, "w") as f:
         json.dump(result, f, indent=2)
@@ -421,22 +454,29 @@ def run_finetune(args):
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Prototypical Networks for few-shot ASCA")
+    parser = argparse.ArgumentParser(
+        description="Prototypical Networks for few-shot ASCA"
+    )
     parser.add_argument("--dataset_dir", type=str, required=True)
-    parser.add_argument("--model", type=str, default="swin",
-                        choices=["swin", "vit", "deit", "beit", "clip", "ast"])
+    parser.add_argument(
+        "--model",
+        type=str,
+        default="swin",
+        choices=["swin", "vit", "deit", "beit", "clip", "ast"],
+    )
     parser.add_argument("--k_shot", type=int, required=True)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--output_dir", type=str, default="results")
-    parser.add_argument("--mode", type=str, default="frozen",
-                        choices=["frozen", "finetune"])
+    parser.add_argument(
+        "--mode", type=str, default="frozen", choices=["frozen", "finetune"]
+    )
 
     # Fine-tuning specific
     parser.add_argument("--finetune_lr", type=float, default=1e-5)
     parser.add_argument("--finetune_episodes", type=int, default=2000)
     parser.add_argument("--episodes_per_epoch", type=int, default=50)
-    parser.add_argument("--n_way", type=int, default=20)
+    parser.add_argument("--n_way", type=int, default=5)
     parser.add_argument("--patience", type=int, default=10)
 
     args = parser.parse_args()

@@ -1,0 +1,9 @@
+{
+  "method": "protonet_finetune",
+  "model": "ast",
+  "dataset": "../new_dataset_zoom",
+  "k_shot": 1,
+  "seed": 456,
+  "test_accuracy": 0.12777777777777777,
+  "best_val_accuracy": 0.17222222685813904
+}

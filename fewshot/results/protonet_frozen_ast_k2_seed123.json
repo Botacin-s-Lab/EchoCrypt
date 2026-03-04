@@ -1,0 +1,8 @@
+{
+  "method": "protonet_frozen",
+  "model": "ast",
+  "dataset": "../new_dataset_zoom",
+  "k_shot": 2,
+  "seed": 123,
+  "test_accuracy": 0.21666666666666667
+}

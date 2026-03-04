@@ -1,0 +1,9 @@
+{
+  "method": "baseline",
+  "model": "ast",
+  "dataset": "../new_dataset_zoom",
+  "k_shot": 4,
+  "seed": 456,
+  "test_accuracy": 0.02777777798473835,
+  "best_val_accuracy": 0.03888889029622078
+}
